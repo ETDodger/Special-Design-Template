@@ -132,8 +132,12 @@ body {
   cursor: pointer;
   position: relative;
 }
+.nav-bullets .bullet:hover {
+  background-color: var(--main-color);
+}
 .nav-bullets .bullet:hover .tooltip {
-  display: block;
+  right: 32px;
+  opacity: 1;
 }
 .nav-bullets .bullet .tooltip {
   background-color: var(--main-color);
@@ -141,12 +145,13 @@ body {
   color: #FFF;
   padding: 8px 10px;
   position: absolute;
-  right: 32px;
+  right: -150px;
   top: -10px;
   text-align: center;
   cursor: default;
   pointer-events: none;
-  display: none;
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
 }
 .nav-bullets .bullet .tooltip:before {
   content: '';
@@ -189,9 +194,15 @@ body {
   padding: 10px;
 }
 .header-area .logo {
-  width: 300px;
+  width: 400px;
   padding: 15px;
   font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 22px;
+}
+.header-area .logo:hover{
+  color: var(--main-color);
 }
 .header-area .links-container {
   width: 100%;
@@ -203,7 +214,7 @@ body {
 }
 .header-area .links li {
   display: inline-block;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 .header-area .links li a {
   color: #FFF;
@@ -213,6 +224,15 @@ body {
 .header-area .links li a:hover,
 .header-area .links li a.active {
   color: var(--main-color);
+}
+.header-area::before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  bottom: -3px;
+  left: 0;
+  background-color: white;
 }
 .header-area .toggle-menu {
   background: none;
@@ -378,7 +398,6 @@ body {
   background-color: #f6f6f6;
   border-radius: 6px;
   position: relative;
-  overflow: hidden;
 }
 .skills .skill-box .skill-progress span {
   position: absolute;
@@ -515,12 +534,14 @@ ox {
 }
 .timeline .timeline-content .left {
   float: left;
+  transition: 0.3s ease-in-out;
 }
 .timeline .timeline-content .left:before {
   right: -35px;
 }
 .timeline .timeline-content .right {
   float: right;
+  transition: 0.3s ease-in-out;
 }
 .timeline .timeline-content .right:before {
   left: -35px;
@@ -539,6 +560,7 @@ ox {
 .timeline .timeline-content .content {
   padding: 20px;
   background-color: #FFF;
+  transition: 0.3s ease-in-out;
 }
 .timeline .timeline-content .content h3 {
   font-weight: bold;
@@ -549,6 +571,12 @@ ox {
   color: #666;
   margin: 0;
   line-height: 1.6;
+}
+.timeline .timeline-content .right:hover {
+  transform: translateX(-30px) scale(1.1);
+}
+.timeline .timeline-content .left:hover {
+  transform: translateX(30px) scale(1.1);
 }
 .clearfix {
   clear: both;
@@ -693,7 +721,8 @@ ox {
   font-style: italic;  
 }
 .testimonials .ts-box .person-info {
-  overflow: hidden;
+  position: relative;
+  text-align: right;
 }
 @media (max-width: 991px) {
   .testimonials .ts-box .person-info {
@@ -701,10 +730,21 @@ ox {
     overflow: visible;
   }
 }
-.testimonials .ts-box .person-info img {
-  float: left;
+.testimonials .ts-box .person-info .img-holder {
+  border: 10px solid var(--main-color);
+  position: absolute;
+  left: -40px;
+  bottom: -55px;
   border-radius: 50%;
-  margin-right: 20px;
+  width: 100px;
+}
+.testimonials .ts-box .person-info img {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.testimonials .ts-box .person-info .img-holder.last {
+  border: 10px solid #333;
 }
 @media (max-width: 991px) {
   .testimonials .ts-box .person-info img {
