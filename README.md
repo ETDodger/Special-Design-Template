@@ -1,3 +1,3 @@
 # Special-Design-Template
 
-https://etdodger.github.io/Special-Design-Template/
+https://special-design-omar.netlify.app/
